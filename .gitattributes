@@ -1,0 +1,5 @@
+# Keep the legacy React/Vite TypeScript sources, but omit them from GitHub language statistics.
+*.ts linguist-detectable=false
+*.tsx linguist-detectable=false
+*.mts linguist-detectable=false
+*.cts linguist-detectable=false
