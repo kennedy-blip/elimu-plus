@@ -98,6 +98,21 @@ test("search route displays matching catalog results and its own breadcrumb", ()
   assert.doesNotMatch(html, /Ready to learn today/);
 });
 
+test("workspace history buttons expose accessible labels and enabled state", () => {
+  const state = makeState();
+  let html = renderWorkspace(state, data, config);
+  const findButton = (action) => html.match(new RegExp(`<button[^>]*data-action="${action}"[^>]*>`))[0];
+  assert.match(findButton("history-back"), /aria-label="Go back"/);
+  assert.match(findButton("history-back"), /disabled/);
+  assert.match(findButton("history-forward"), /disabled/);
+
+  state.canGoBack = true;
+  state.canGoForward = true;
+  html = renderWorkspace(state, data, config);
+  assert.doesNotMatch(findButton("history-back"), /disabled/);
+  assert.doesNotMatch(findButton("history-forward"), /disabled/);
+});
+
 test("quiz, lab, and form dialogs render expected controls", () => {
   const state = makeState();
   state.currentView = "quizzes";

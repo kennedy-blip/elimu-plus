@@ -28,8 +28,8 @@ Open `http://localhost:8000` for a local preview. The generated `dist/` director
 
 ## Local verification checkpoint (2026-11-24)
 
-- Build completed with 8 output files; Python build tests passed (2) and Node tests passed (13).
-- Temporary headless Chromium runs exercised the grade chooser, invalid and valid onboarding entries, quiz scoring/persistence, lesson completion, lab controls, offline/download toggles, competency updates, portfolio/service/reflection forms, parent tabs/messages, settings, the local tutor, voice notes, search, reload persistence, JSON export, and data reset.
+- Build completed with 8 output files; Python build tests passed (2) and Node tests passed (14).
+- Temporary headless Chromium runs exercised the grade chooser, invalid and valid onboarding entries, quiz scoring/persistence, lesson completion, lab controls, offline/download toggles, competency updates, portfolio/service/reflection forms, parent tabs/messages, settings, the local tutor, voice notes, search, back/forward navigation, reload persistence, JSON export, and data reset.
 - At a 390 px viewport, all 12 primary workspace views plus the search-results route were traversed with no horizontal overflow. Browser console/page errors and failed requests were absent in the responsive run.
 - The landing page was checked against the fetched production text baseline: 23 phrases covering the chooser, all three CBC level names/ranges, descriptions, and feature bullets match.
 - The browser harness/tooling was temporary and is not included as a project dependency or repeatable test command. This is interaction/responsive smoke evidence plus a text check, not a screenshot comparison with production; visual parity and Render staging remain unverified.

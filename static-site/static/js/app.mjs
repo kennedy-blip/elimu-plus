@@ -19,6 +19,8 @@ const PAGE_IDS = new Set([...NAV_ITEMS.map((item) => item.id), "parent", "search
 let data = null;
 let config = null;
 let state = null;
+let navigationTrail = [];
+let navigationIndex = -1;
 let onboarding = null;
 let selectedLevelId = null;
 let recordingTimer = null;
@@ -172,7 +174,11 @@ function render() {
   if (!app || !data || !config || !state) return;
   if (state.profile) {
     app.className = "workspace-app";
-    app.innerHTML = renderWorkspace(state, data, config);
+    app.innerHTML = renderWorkspace({
+      ...state,
+      canGoBack: navigationIndex > 0,
+      canGoForward: navigationIndex >= 0 && navigationIndex < navigationTrail.length - 1,
+    }, data, config);
     return;
   }
   if (onboarding) {
@@ -195,6 +201,19 @@ function renderWorkspaceAndSave() {
   render();
 }
 
+function resetNavigation(view) {
+  navigationTrail = [view];
+  navigationIndex = 0;
+  history.replaceState({ view, navigationIndex }, "", `#${view}`);
+}
+
+function pushNavigation(view) {
+  navigationTrail = navigationTrail.slice(0, navigationIndex + 1);
+  navigationTrail.push(view);
+  navigationIndex = navigationTrail.length - 1;
+  history.pushState({ view, navigationIndex }, "", `#${view}`);
+}
+
 function navigate(view, { push = true } = {}) {
   if (!PAGE_IDS.has(view) || !state?.profile) return;
   if (state.isRecording && view !== "voice-notes") finishRecording(true, false);
@@ -202,7 +221,11 @@ function navigate(view, { push = true } = {}) {
   state.modal = null;
   state.menuOpen = false;
   if (view !== "quizzes") state.quizSession = null;
-  if (push) history.pushState({ view }, "", `#${view}`);
+  if (push) pushNavigation(view);
+  else if (navigationIndex >= 0) {
+    navigationTrail[navigationIndex] = view;
+    history.replaceState({ view, navigationIndex }, "", `#${view}`);
+  }
   renderWorkspaceAndSave();
 }
 
@@ -217,6 +240,8 @@ function changeGrade() {
   state.quizSession = null;
   onboarding = null;
   selectedLevelId = null;
+  navigationTrail = [];
+  navigationIndex = -1;
   history.replaceState({}, "", `${location.pathname}${location.search}`);
   renderWorkspaceAndSave();
 }
@@ -228,7 +253,7 @@ function startQuiz(quizId) {
   state.quizSession = { id: quizId, index: 0, answers: [], selected: null, result: null };
   state.modal = null;
   state.menuOpen = false;
-  history.pushState({ view: "quizzes" }, "", "#quizzes");
+  pushNavigation("quizzes");
   renderWorkspaceAndSave();
 }
 
@@ -416,6 +441,8 @@ function resetDemoData() {
   state = initialState(data);
   onboarding = null;
   selectedLevelId = null;
+  navigationTrail = [];
+  navigationIndex = -1;
   history.replaceState({}, "", `${location.pathname}${location.search}`);
   render();
   showToast("Local demo data cleared.");
@@ -423,6 +450,12 @@ function resetDemoData() {
 
 function handleAction(action, control) {
   switch (action) {
+    case "history-back":
+      if (navigationIndex > 0) history.back();
+      break;
+    case "history-forward":
+      if (navigationIndex >= 0 && navigationIndex < navigationTrail.length - 1) history.forward();
+      break;
     case "select-level": {
       selectedLevelId = control.dataset.level;
       if (data.grade_levels.some((item) => item.id === selectedLevelId)) render();
@@ -548,7 +581,7 @@ function handleAction(action, control) {
     case "quiz-back":
       state.quizSession = null;
       state.currentView = "quizzes";
-      history.replaceState({ view: "quizzes" }, "", "#quizzes");
+      history.replaceState({ view: "quizzes", navigationIndex }, "", "#quizzes");
       renderWorkspaceAndSave();
       break;
     case "filter":
@@ -699,7 +732,7 @@ function completeOnboarding(school) {
   selectedLevelId = null;
   state.currentView = "dashboard";
   state.modal = null;
-  history.replaceState({ view: "dashboard" }, "", "#dashboard");
+  resetNavigation("dashboard");
   renderWorkspaceAndSave();
   showToast(`Karibu, ${state.profile.name.split(/\s+/)[0]}! Your learning space is ready.`);
 }
@@ -867,15 +900,27 @@ function handleChange(event) {
   }
 }
 
-function handleHistory() {
+function handleHistory(event) {
   if (!state?.profile) return;
   const view = location.hash.slice(1);
-  if (PAGE_IDS.has(view)) {
-    state.currentView = view;
-    state.modal = null;
-    state.quizSession = null;
-    renderWorkspaceAndSave();
+  if (!PAGE_IDS.has(view)) return;
+  const targetIndex = event.state?.navigationIndex;
+  if (Number.isInteger(targetIndex) && navigationTrail[targetIndex] === view) {
+    navigationIndex = targetIndex;
+  } else if (navigationIndex > 0 && navigationTrail[navigationIndex - 1] === view) {
+    navigationIndex -= 1;
+  } else if (navigationIndex < navigationTrail.length - 1 && navigationTrail[navigationIndex + 1] === view) {
+    navigationIndex += 1;
+  } else {
+    navigationTrail = [view];
+    navigationIndex = 0;
+    history.replaceState({ view, navigationIndex }, "", `#${view}`);
   }
+  state.currentView = view;
+  state.modal = null;
+  state.quizSession = null;
+  state.menuOpen = false;
+  renderWorkspaceAndSave();
 }
 
 async function boot() {
@@ -902,7 +947,7 @@ async function boot() {
     if (state.profile) {
       const route = location.hash.slice(1);
       if (PAGE_IDS.has(route)) state.currentView = route;
-      history.replaceState({ view: state.currentView }, "", `#${state.currentView}`);
+      resetNavigation(state.currentView);
       render();
     } else {
       render();
