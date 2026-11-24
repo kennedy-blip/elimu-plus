@@ -1,12 +1,15 @@
 {
-  "name": "react-vite-tailwind",
+  "name": "elimu-plus",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "npm run build && python3 -m http.server ${PORT:-8000} --bind 0.0.0.0 --directory dist",
+    "dev:react": "vite",
+    "build": "python3 -m venv .venv && .venv/bin/python -m pip install --disable-pip-version-check -r static-site/requirements.txt && .venv/bin/python static-site/render_build.py",
+    "build:react": "vite build",
+    "preview": "python3 -m http.server ${PORT:-8000} --bind 0.0.0.0 --directory dist",
+    "preview:react": "vite preview"
   },
   "dependencies": {
     "clsx": "^2.1.1",

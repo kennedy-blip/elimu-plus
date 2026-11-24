@@ -1,10 +1,12 @@
 import json
+import shutil
 import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
 import build
+import render_build
 
 
 class TextCollector(HTMLParser):
@@ -65,6 +67,27 @@ class StaticBuildTests(unittest.TestCase):
     def test_build_refuses_to_write_outside_sidecar(self):
         with self.assertRaisesRegex(ValueError, "child of the static-site directory"):
             build.build_site(build.ROOT.parent / "outside-output")
+
+    def test_render_build_populates_repository_publish_directory(self):
+        publish_dir = render_build.PUBLISH_DIR
+        with tempfile.TemporaryDirectory() as backup_dir:
+            backup = Path(backup_dir) / "dist"
+            existed = publish_dir.exists()
+            if existed:
+                self.assertTrue(publish_dir.is_dir())
+                self.assertFalse(publish_dir.is_symlink())
+                shutil.copytree(publish_dir, backup)
+            try:
+                output = render_build.build_render_site()
+                self.assertEqual(output, publish_dir)
+                self.assertTrue((output / "index.html").is_file())
+                self.assertTrue((output / "static/js/legacy-import.mjs").is_file())
+                self.assertTrue((output / "data/learning-content.json").is_file())
+            finally:
+                if publish_dir.exists():
+                    shutil.rmtree(publish_dir)
+                if existed:
+                    shutil.copytree(backup, publish_dir)
 
 
 if __name__ == "__main__":

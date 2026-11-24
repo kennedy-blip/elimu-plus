@@ -98,6 +98,16 @@ test("search route displays matching catalog results and its own breadcrumb", ()
   assert.doesNotMatch(html, /Ready to learn today/);
 });
 
+test("settings expose editable local profile fields without secret configuration", () => {
+  const state = makeState();
+  state.currentView = "settings";
+  const html = renderWorkspace(state, data, config);
+  assert.match(html, /data-form="profile"/);
+  assert.match(html, /id="profile-name"/);
+  assert.match(html, /id="profile-school"/);
+  assert.doesNotMatch(html, /OpenAI API Key|sk-[A-Za-z0-9]/);
+});
+
 test("workspace history buttons expose accessible labels and enabled state", () => {
   const state = makeState();
   let html = renderWorkspace(state, data, config);

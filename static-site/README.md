@@ -1,8 +1,8 @@
-# Elimu Plus static-site prototype
+# Elimu Plus static site
 
-This is an **independent migration prototype**. The existing React/Vite application remains at the repository root; this directory does not replace it, change the production deploy configuration, or perform a Render cutover.
+This Python/Jinja2 site is the production build target for the Elimu Plus transition. The former React/Vite source remains in `src/` for reference and local comparison; it is not included in the production build. The application is intentionally browser-only: learner data stays on the current device, with no accounts or cross-device sync.
 
-The public production baseline is still [`https://elimu-plus.onrender.com`](https://elimu-plus.onrender.com). A successful local build is not evidence of Render staging or production parity.
+The current public baseline is [`https://elimu-plus.onrender.com`](https://elimu-plus.onrender.com). A successful local build is not evidence of a Render deployment.
 
 ## Target and structure
 
@@ -24,15 +24,16 @@ python3 -m venv .venv
 python3 -m http.server 8000 --directory dist
 ```
 
-Open `http://localhost:8000` for a local preview. The generated `dist/` directory is ignored by Git. For a future Render static-site staging service, a *proposal only* would be root directory `static-site`, build command `python3 -m pip install -r requirements.txt && python3 build.py`, and publish directory `dist` (assuming Render's selected runtime provides Python 3.11). **No Render service has been created or changed in this work.** Verify the actual dashboard runtime/root/build/publish settings and use a separate staging service before considering any cutover.
+Open `http://localhost:8000` for a local preview. The generated `static-site/dist/` and root `dist/` directories are ignored by Git. From the repository root, `npm run build` creates a temporary Python environment, installs the pinned Jinja2 dependency, and builds the publishable site into root `dist/`; `npm run dev` builds and serves that output. The root `render.yaml` declares a static Render service on `main` with automatic deploys on commits, the same build command, and root `dist` as its publish directory. The Render connector is unavailable in this session, so whether the existing production service is linked to this Blueprint and whether its dashboard settings match remain unverified.
 
 ## Local verification checkpoint (2026-11-24)
 
-- Build completed with 8 output files; Python build tests passed (2) and Node tests passed (14).
-- Temporary headless Chromium runs exercised the grade chooser, invalid and valid onboarding entries, quiz scoring/persistence, lesson completion, lab controls, offline/download toggles, competency updates, portfolio/service/reflection forms, parent tabs/messages, settings, the local tutor, voice notes, search, back/forward navigation, reload persistence, JSON export, and data reset.
+- The static build emitted 9 files; Python build tests passed (3) and Node tests passed (19). The repository-root `npm run build` also produced the 9-file `dist/` publish bundle.
+- A one-time, read-only migration imports the existing learner's IndexedDB profile and supported progress on first load when the old `elimu-plus-db` is available on the same origin. It leaves that database untouched and deliberately excludes API keys, AI chat history, and portfolio file bytes; the imported state remains in this browser's local storage.
+- Temporary headless Chromium runs exercised the grade chooser, invalid and valid onboarding entries, quiz scoring/persistence, lesson completion, lab controls, offline/download toggles, competency updates, portfolio/service/reflection forms, parent tabs/messages, editable settings profile, the local tutor, voice notes, search, back/forward navigation, reload persistence, JSON export, and data reset.
 - At a 390 px viewport, all 12 primary workspace views plus the search-results route were traversed with no horizontal overflow. Browser console/page errors and failed requests were absent in the responsive run.
 - The landing page was checked against the fetched production text baseline: 23 phrases covering the chooser, all three CBC level names/ranges, descriptions, and feature bullets match.
-- The browser harness/tooling was temporary and is not included as a project dependency or repeatable test command. This is interaction/responsive smoke evidence plus a text check, not a screenshot comparison with production; visual parity and Render staging remain unverified.
+- The browser harness/tooling was temporary and is not included as a project dependency or repeatable test command. This is interaction/responsive smoke evidence plus a text check, not a screenshot comparison with production; screenshot-level visual parity and the live Render deployment remain unverified.
 
 ## Tests
 
@@ -42,12 +43,12 @@ cd static-site
 node --test tests/*.test.mjs
 ```
 
-The Node tests use the built-in test runner; no Node package dependencies are required for this prototype.
+The Node tests use the built-in test runner and require no additional Node packages.
 
-## Prototype limits and data safety
+## Known limits and data safety
 
 - The app shell, grade selection, onboarding, dashboard, navigation, portfolio metadata, competency progress, quizzes, lesson previews, small lab simulations, language flashcards, community-service log, offline flags, voice notes, parent demo view, and settings are implemented as a local browser demo.
-- User-entered demo state is stored in this browser's `localStorage`. The old app's IndexedDB profile is **not** imported, and this prototype has no server-side accounts or database.
+- User-entered demo state is stored in this browser's `localStorage`. The one-time legacy import described above copies supported records from the old app's IndexedDB on the same origin; there is still no server-side account or database, and this browser's data does not sync to other devices.
 - Lesson media, uploads, school records, and parent messages are illustrative/local-only. Portfolio entries save metadata, not uploaded files; offline buttons toggle a demo state rather than downloading curriculum files.
 - Voice input uses browser speech recognition when available and a short local sample transcript otherwise.
 - The tutor uses built-in example responses only. The old `.env` file and any API keys are not copied into this directory; no OpenAI key or external AI endpoint is included in the generated site.
@@ -55,4 +56,4 @@ The Node tests use the built-in test runner; no Node package dependencies are re
 
 ## Deployment status
 
-Render's dashboard could not be inspected from this session. The hostname suggests a production service named `elimu-plus`, but service type and actual root directory, build command, and publish directory are unverified. This prototype has only been built and tested locally; production settings remain untouched, and staging/parity checks are still outstanding.
+The committed Blueprint targets a Render Static Site named `elimu-plus` on `main`; the build outputs to root `dist/`, and automatic deploys on commits are configured via `autoDeployTrigger: commit`. The Render connector is unsupported, so I cannot confirm that the existing `elimu-plus.onrender.com` service is Blueprint-managed, that these settings have been applied, or that a deployment has succeeded. The public site is not considered transitioned until the merged build is observed at the production URL.

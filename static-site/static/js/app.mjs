@@ -5,6 +5,7 @@ import {
   getCompetencyLevel,
   getEducationLevel,
 } from "./logic.mjs";
+import { importLegacyProfile } from "./legacy-import.mjs";
 import {
   NAV_ITEMS,
   renderFlowFrame,
@@ -772,6 +773,18 @@ function handleSubmit(event) {
     render();
     return;
   }
+  if (kind === "profile") {
+    const name = formValue(form, "name");
+    const school = formValue(form, "school");
+    if (name.length < 2) return showToast("Please enter at least two characters for your name.");
+    if (!/^[\p{L}\p{M}\s'-]+$/u.test(name)) return showToast("Use letters, spaces, hyphens, or apostrophes in your name.");
+    if (school.length < 3) return showToast("School name must be at least three characters.");
+    state.profile.name = name.slice(0, 80);
+    state.profile.school = school.slice(0, 100);
+    renderWorkspaceAndSave();
+    showToast("Profile changes saved in this browser.");
+    return;
+  }
   if (kind === "portfolio") {
     const title = formValue(form, "title");
     if (!title) return showToast("Add a title for this evidence item.");
@@ -943,12 +956,14 @@ async function boot() {
     if (!contentResponse.ok || !configResponse.ok) throw new Error("Static content files were not found.");
     data = await contentResponse.json();
     config = await configResponse.json();
+    const importedLegacyProfile = await importLegacyProfile({ storageKey: config.storage_key, content: data });
     state = loadState(data, config);
     if (state.profile) {
       const route = location.hash.slice(1);
       if (PAGE_IDS.has(route)) state.currentView = route;
       resetNavigation(state.currentView);
       render();
+      if (importedLegacyProfile) showToast("Your learner profile and saved progress were imported. API keys and chat history were not copied.");
     } else {
       render();
     }

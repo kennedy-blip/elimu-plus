@@ -598,6 +598,12 @@
 .settings-profile > div { display: grid; flex: 1; gap: 4px; min-width: 0; }
 .settings-profile > div strong { color: #344256; font-size: 11px; }
 .settings-profile > div small { color: #8b96a3; font-size: 8px; }
+.profile-edit-form { display: grid; gap: 7px; margin-top: 10px; }
+.profile-edit-form label { color: #69778a; font-size: 9px; font-weight: 700; }
+.profile-edit-form input { width: 100%; min-width: 0; padding: 9px 10px; border: 1px solid #e0e6ec; border-radius: 8px; color: #344256; background: #fff; font-size: 10px; }
+.profile-edit-form input:focus { border-color: #6dbd8b; outline: 3px solid #6dbd8b2b; }
+.profile-edit-form .muted-small { margin: 1px 0 0; }
+.profile-edit-form .button { justify-self: start; min-height: 34px; font-size: 9px; }
 .setting-toggle, .setting-select { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid #eff2f5; cursor: pointer; }
 .setting-toggle:last-child, .setting-select:last-child { border-bottom: 0; }
 .setting-toggle > span, .setting-select > span { display: grid; gap: 4px; }
