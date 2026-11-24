@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: elimu-plus
+    runtime: static
+    branch: main
+    rootDir: .
+    autoDeployTrigger: commit
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    buildFilter:
+      paths:
+        - package.json
+        - render.yaml
+        - static-site/**
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

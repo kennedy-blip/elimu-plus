@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2b">
+  <meta name="description" content="{{ config.description }}">
+  <title>{{ config.title }}</title>
+  <link rel="stylesheet" href="./static/css/site.css">
+  <link rel="stylesheet" href="./static/css/app.css">
+  <script type="module" src="./static/js/app.mjs"></script>
+</head>
+<body>
+  <div class="ambient ambient--green" aria-hidden="true"></div>
+  <div class="ambient ambient--blue" aria-hidden="true"></div>
+  <div class="landing" id="app">
+    <header class="landing-header">
+      <a class="brand" href="./" aria-label="{{ config.name }} home">
+        <span class="brand-mark" aria-hidden="true">📚</span>
+        <span class="brand-copy">
+          <strong>{{ config.name }}</strong>
+          <small>CBC learning companion</small>
+        </span>
+      </a>
+      <div class="header-note"><span class="status-dot"></span> Made for learners in Kenya</div>
+    </header>
+
+    <main class="landing-main" id="view-root" aria-live="polite">
+      <section class="welcome" aria-labelledby="welcome-title">
+        <p class="eyebrow"><span>🇰🇪</span> Kenya's CBC learning companion</p>
+        <h1 id="welcome-title">A brighter way<br>to <span>learn and grow.</span></h1>
+        <p class="welcome-copy">Choose your level to find lessons, practice, and tools made for your learning journey.</p>
+        <div class="welcome-badges" aria-label="Platform highlights">
+          <span>📚 KICD aligned</span><span>🎓 Grades 4-12</span><span>✨ Learn at your pace</span>
+        </div>
+      </section>
+
+      <section class="level-section" aria-labelledby="level-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="level-title">Choose Your Level</h2>
+            <p>Select your education level to get started</p>
+          </div>
+          <span class="section-count">01 <i>/ 03</i></span>
+        </div>
+        <div class="level-grid">
+          {% for level in content.grade_levels %}
+          <button class="level-card level-card--{{ level.theme }}" type="button" data-action="select-level" data-level="{{ level.id }}" aria-label="{{ level.name }}, {{ level.subtitle }}">
+            <span class="level-icon" aria-hidden="true">{{ level.icon }}</span>
+            <span class="level-card-top"><span class="level-kicker">{{ level.subtitle }}</span><span class="level-arrow" aria-hidden="true">↗</span></span>
+            <strong class="level-name">{{ level.name }}</strong>
+            <span class="level-description">{{ level.description }}</span>
+            <span class="level-features">
+              {% for feature in level.features %}<span><i aria-hidden="true">✓</i>{{ feature }}</span>{% endfor %}
+            </span>
+            <span class="level-action">Explore this level <span aria-hidden="true">→</span></span>
+          </button>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    <footer class="landing-footer">
+      <span><span aria-hidden="true">🇰🇪</span> Republic of Kenya</span>
+      <span class="footer-separator" aria-hidden="true">•</span>
+      <span>Aligned with KICD curriculum</span>
+      <span class="footer-separator" aria-hidden="true">•</span>
+      <span>Learning starts with you</span>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>

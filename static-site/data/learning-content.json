@@ -1,0 +1,294 @@
+{
+  "grade_levels": [
+    {
+      "id": "upper-primary",
+      "name": "Upper Primary",
+      "subtitle": "Grades 4-6",
+      "grades": [4, 5, 6],
+      "icon": "🌱",
+      "description": "Building strong foundations in literacy, numeracy, and core competencies",
+      "features": ["Interactive Learning Games", "Picture-Based Lessons", "Basic STEM Activities", "Indigenous Languages"],
+      "theme": "green"
+    },
+    {
+      "id": "junior-secondary",
+      "name": "Junior Secondary",
+      "subtitle": "Grades 7-9",
+      "grades": [7, 8, 9],
+      "icon": "📚",
+      "description": "Exploring subjects deeply and developing critical thinking skills",
+      "features": ["Virtual STEM Labs", "Essay Writing Tools", "Community Service Projects", "Career Exploration"],
+      "theme": "blue"
+    },
+    {
+      "id": "senior-school",
+      "name": "Senior School",
+      "subtitle": "Grades 10-12",
+      "grades": [10, 11, 12],
+      "icon": "🎓",
+      "description": "Preparing for higher education and professional pathways",
+      "features": ["Advanced STEM Labs", "Research Projects", "University Prep", "Internship Tracking"],
+      "theme": "purple"
+    }
+  ],
+  "schools": [
+    "Alliance High School",
+    "Kenya High School",
+    "Starehe Boys Centre",
+    "Moi Girls School",
+    "Nairobi School",
+    "Mangu High School",
+    "Loreto Convent Msongari",
+    "St. Mary's School",
+    "Riara Group of Schools",
+    "Brookhouse School",
+    "Aga Khan Academy",
+    "Rusinga School",
+    "Hillcrest International School",
+    "Banda School",
+    "Other"
+  ],
+  "competencies": [
+    { "id": "communication", "name": "Communication & Collaboration", "short_name": "Communication", "score": 75, "icon": "💬" },
+    { "id": "critical-thinking", "name": "Critical Thinking & Problem Solving", "short_name": "Critical Thinking", "score": 90, "icon": "🧠" },
+    { "id": "creativity", "name": "Creativity & Imagination", "short_name": "Creativity", "score": 70, "icon": "🎨" },
+    { "id": "citizenship", "name": "Citizenship", "short_name": "Citizenship", "score": 55, "icon": "🏛️" },
+    { "id": "digital-literacy", "name": "Digital Literacy", "short_name": "Digital Literacy", "score": 88, "icon": "💻" },
+    { "id": "learning-to-learn", "name": "Learning to Learn", "short_name": "Self-Learning", "score": 72, "icon": "📚" },
+    { "id": "self-efficacy", "name": "Self-Efficacy", "short_name": "Self-Efficacy", "score": 68, "icon": "⭐" }
+  ],
+  "dashboard": {
+    "upcoming_tasks": [
+      { "title": "Mathematics Quiz - Algebra", "due": "Today", "type": "quiz", "icon": "🧮" },
+      { "title": "Science Project Submission", "due": "Tomorrow", "type": "project", "icon": "🔬" },
+      { "title": "Kiswahili Essay", "due": "In 3 days", "type": "essay", "icon": "✍️" },
+      { "title": "Community Service Report", "due": "This week", "type": "service", "icon": "🤝" }
+    ],
+    "achievements": [
+      { "title": "Critical Thinker Badge", "icon": "🧠", "date": "Today" },
+      { "title": "STEM Explorer", "icon": "🔬", "date": "Yesterday" },
+      { "title": "10-Day Streak", "icon": "🔥", "date": "2 days ago" }
+    ],
+    "parent": {
+      "attendance": [
+        { "day": "Mon", "present": true },
+        { "day": "Tue", "present": true },
+        { "day": "Wed", "present": true },
+        { "day": "Thu", "present": false },
+        { "day": "Fri", "present": true }
+      ],
+      "subject_performance": [
+        { "subject": "Mathematics", "grade": "B+", "score": 78, "trend": "up" },
+        { "subject": "Science", "grade": "A-", "score": 85, "trend": "up" },
+        { "subject": "English", "grade": "B", "score": 72, "trend": "stable" },
+        { "subject": "Kiswahili", "grade": "B+", "score": 76, "trend": "up" },
+        { "subject": "Social Studies", "grade": "A", "score": 88, "trend": "up" },
+        { "subject": "Creative Arts", "grade": "A+", "score": 95, "trend": "stable" }
+      ],
+      "activities": [
+        { "action": "Completed Mathematics Quiz", "score": "85%", "time": "2 hours ago", "icon": "🧮" },
+        { "action": "Uploaded Science Project", "time": "1 day ago", "icon": "🔬" },
+        { "action": "Watched KICD Lesson", "time": "2 days ago", "icon": "🎬" },
+        { "action": "Community Service Logged", "score": "3 hours", "time": "3 days ago", "icon": "🤝" }
+      ],
+      "messages": [
+        { "from": "Mathematics Teacher", "subject": "Excellent Quiz Performance!", "preview": "Congratulations on the recent quiz...", "time": "1 day ago", "unread": true },
+        { "from": "Science Teacher", "subject": "Project Submission Confirmed", "preview": "The science project has been received...", "time": "2 days ago", "unread": false },
+        { "from": "School Admin", "subject": "Term Calendar", "preview": "Please check with your school for the latest calendar.", "time": "1 week ago", "unread": false }
+      ]
+    }
+  },
+  "quizzes": [
+    {
+      "id": "algebra-basics",
+      "title": "Algebra Basics",
+      "subject": "Mathematics",
+      "grade": 7,
+      "question_count": 10,
+      "duration_minutes": 15,
+      "points": 100,
+      "completed": true,
+      "score": 85,
+      "icon": "🧮",
+      "questions": [
+        { "question": "What is 15 + 27?", "options": ["40", "42", "44", "38"], "correct": 1, "explanation": "15 + 27 = 42. Add the ones (5 + 7 = 12, carry 1), then add the tens." },
+        { "question": "Solve: 3x = 15. What is x?", "options": ["3", "5", "12", "18"], "correct": 1, "explanation": "Divide both sides by 3: x = 15 ÷ 3 = 5." },
+        { "question": "What is the area of a rectangle with length 8 cm and width 5 cm?", "options": ["13 cm²", "26 cm²", "40 cm²", "45 cm²"], "correct": 2, "explanation": "Area = length × width = 8 × 5 = 40 cm²." }
+      ]
+    },
+    {
+      "id": "plant-cells",
+      "title": "Plant Cells & Tissues",
+      "subject": "Science",
+      "grade": 7,
+      "question_count": 15,
+      "duration_minutes": 20,
+      "points": 150,
+      "completed": false,
+      "icon": "🔬",
+      "questions": [
+        { "question": "Which part of a plant cell contains chlorophyll?", "options": ["Nucleus", "Chloroplast", "Cell wall", "Vacuole"], "correct": 1, "explanation": "Chloroplasts contain chlorophyll, which absorbs light for photosynthesis." },
+        { "question": "What is the main role of the cell wall?", "options": ["Store genetic information", "Control what enters the cell", "Support and protect the cell", "Make proteins"], "correct": 2, "explanation": "The cell wall gives a plant cell its shape and helps protect it." },
+        { "question": "Which structure stores water in a plant cell?", "options": ["Vacuole", "Ribosome", "Nucleus", "Chloroplast"], "correct": 0, "explanation": "The large central vacuole stores water and helps keep the cell firm." }
+      ]
+    },
+    {
+      "id": "kiswahili-grammar",
+      "title": "Kiswahili Grammar",
+      "subject": "Kiswahili",
+      "grade": 7,
+      "question_count": 12,
+      "duration_minutes": 18,
+      "points": 120,
+      "completed": true,
+      "score": 92,
+      "icon": "🗣️",
+      "questions": [
+        { "question": "Neno linalotaja mtu, mahali au kitu huitwaje?", "options": ["Kitenzi", "Nomino", "Kivumishi", "Kielezi"], "correct": 1, "explanation": "Nomino hutaja mtu, mahali, kitu au hali." },
+        { "question": "Chagua kitenzi katika sentensi: Amina anakimbia haraka.", "options": ["Amina", "anakimbia", "haraka", "sentensi"], "correct": 1, "explanation": "'Anakimbia' ni kitenzi kinachoonyesha tendo." },
+        { "question": "Wingi wa 'mtoto' ni upi?", "options": ["watoto", "mitoto", "vitoto", "matoto"], "correct": 0, "explanation": "Wingi wa mtoto ni watoto." }
+      ]
+    },
+    {
+      "id": "kenya-history",
+      "title": "Kenya History",
+      "subject": "Social Studies",
+      "grade": 7,
+      "question_count": 10,
+      "duration_minutes": 15,
+      "points": 100,
+      "completed": false,
+      "icon": "🌍",
+      "questions": [
+        { "question": "In which year did Kenya gain independence?", "options": ["1952", "1963", "1964", "1978"], "correct": 1, "explanation": "Kenya became independent on 12 December 1963." },
+        { "question": "Who became Kenya's first President?", "options": ["Jomo Kenyatta", "Daniel arap Moi", "Tom Mboya", "Oginga Odinga"], "correct": 0, "explanation": "Jomo Kenyatta became Kenya's first President at independence." },
+        { "question": "What is celebrated on Madaraka Day?", "options": ["The start of self-rule", "The end of the First World War", "The new school year", "The harvest season"], "correct": 0, "explanation": "Madaraka Day marks Kenya attaining internal self-rule on 1 June 1963." }
+      ]
+    },
+    {
+      "id": "english-comprehension",
+      "title": "English Comprehension",
+      "subject": "English",
+      "grade": 7,
+      "question_count": 8,
+      "duration_minutes": 25,
+      "points": 80,
+      "completed": true,
+      "score": 78,
+      "icon": "📖",
+      "questions": [
+        { "question": "Which sentence uses a question mark correctly?", "options": ["Where is my book?", "Where is my book.", "Where is my book!", "Where is my book,"], "correct": 0, "explanation": "A direct question ends with a question mark." },
+        { "question": "Choose the closest meaning of 'enormous'.", "options": ["Tiny", "Very large", "Quiet", "Careful"], "correct": 1, "explanation": "Enormous means very large." },
+        { "question": "What is the main idea of a paragraph?", "options": ["The central point", "The final punctuation", "The longest word", "The title only"], "correct": 0, "explanation": "The main idea is the key point the paragraph communicates." }
+      ]
+    },
+    {
+      "id": "digital-skills",
+      "title": "Digital Skills",
+      "subject": "Computer Science",
+      "grade": 7,
+      "question_count": 12,
+      "duration_minutes": 20,
+      "points": 120,
+      "completed": false,
+      "icon": "💻",
+      "questions": [
+        { "question": "Which device is commonly used to enter text into a computer?", "options": ["Monitor", "Keyboard", "Speaker", "Projector"], "correct": 1, "explanation": "A keyboard is an input device used to type text and commands." },
+        { "question": "What should you do before sharing a photo online?", "options": ["Check that you have permission", "Post it everywhere", "Share your password", "Turn off the screen"], "correct": 0, "explanation": "Respect privacy and get permission before sharing someone else's photo." },
+        { "question": "Which is a strong password practice?", "options": ["Use your first name", "Reuse one password everywhere", "Use a long unique passphrase", "Share it with friends"], "correct": 2, "explanation": "A long, unique passphrase is harder to guess and should not be reused." }
+      ]
+    }
+  ],
+  "lessons": [
+    { "id": "algebra", "title": "Introduction to Algebra", "subject": "Mathematics", "duration": "15:30", "icon": "🧮", "grade": 7, "views": 1234, "description": "Learn the basics of algebra, including variables, expressions, and simple equations.", "objectives": ["Recognize variables and constants", "Write simple algebraic expressions", "Solve one-step equations"] },
+    { "id": "plant-cell", "title": "Plant Cell Structure", "subject": "Biology", "duration": "20:15", "icon": "🌱", "grade": 7, "views": 987, "description": "Explore the structures of plant cells and how they support life.", "objectives": ["Identify key plant-cell structures", "Explain the roles of chloroplasts and vacuoles", "Compare plant and animal cells"] },
+    { "id": "kenya-independence", "title": "Kenya's Independence Story", "subject": "History", "duration": "25:00", "icon": "🇰🇪", "grade": 7, "views": 2341, "description": "Trace the journey to Uhuru and the events leading to independence.", "objectives": ["Recognize key events in the independence movement", "Describe the meaning of Uhuru", "Connect civic history to citizenship"] },
+    { "id": "essay-writing", "title": "Essay Writing Basics", "subject": "English", "duration": "18:45", "icon": "✍️", "grade": 7, "views": 1567, "description": "Build clear essays with structure, flow, and compelling ideas.", "objectives": ["Plan a focused introduction", "Organize ideas into paragraphs", "Revise for clarity"] },
+    { "id": "insha-kiswahili", "title": "Insha ya Kiswahili", "subject": "Kiswahili", "duration": "22:10", "icon": "📝", "grade": 7, "views": 890, "description": "Jifunze jinsi ya kupanga na kuandika insha nzuri ya Kiswahili.", "objectives": ["Panga mawazo kabla ya kuandika", "Tumia aya kwa mpangilio", "Soma tena na kusahihisha insha"] },
+    { "id": "coding", "title": "Introduction to Coding", "subject": "Computer Science", "duration": "30:00", "icon": "💻", "grade": 7, "views": 3456, "description": "Start your coding journey with basic programming concepts and logic.", "objectives": ["Explain an algorithm", "Use sequence and simple conditions", "Break a problem into steps"] },
+    { "id": "chemical-reactions", "title": "Chemical Reactions", "subject": "Chemistry", "duration": "19:30", "icon": "⚗️", "grade": 8, "views": 1122, "description": "Understand common reaction types and how substances change.", "objectives": ["Identify signs of a chemical reaction", "Describe reactants and products", "Use simple word equations"] },
+    { "id": "newtons-laws", "title": "Newton's Laws of Motion", "subject": "Physics", "duration": "24:00", "icon": "🚀", "grade": 8, "views": 2890, "description": "Discover the laws that describe motion, force, and everyday movement.", "objectives": ["Describe inertia", "Relate force, mass, and acceleration", "Identify action-reaction pairs"] }
+  ],
+  "labs": [
+    { "id": "virtual-microscope", "title": "Virtual Microscope", "subject": "biology", "description": "Explore cell structures using a virtual microscope.", "difficulty": "beginner", "duration": "20 min", "icon": "🔬", "objectives": ["Observe cell structures", "Use magnification", "Record careful observations"] },
+    { "id": "chemical-reactions-lab", "title": "Chemical Reactions Simulator", "subject": "chemistry", "description": "Explore how substances change through safe simulated reactions.", "difficulty": "intermediate", "duration": "30 min", "icon": "⚗️", "objectives": ["Compare reactants and products", "Observe evidence of change", "Follow safe lab procedures"] },
+    { "id": "physics-motion", "title": "Physics Motion Lab", "subject": "physics", "description": "Experiment with forces, motion, and Newton's laws.", "difficulty": "intermediate", "duration": "25 min", "icon": "🚀", "objectives": ["Change the applied force", "Observe how motion changes", "Explain the result"] },
+    { "id": "geometry-explorer", "title": "Geometry Explorer", "subject": "mathematics", "description": "Visualize and manipulate two-dimensional and 3D shapes.", "difficulty": "beginner", "duration": "15 min", "icon": "📐", "objectives": ["Identify shape properties", "Compare area and volume", "Describe spatial relationships"] },
+    { "id": "electrical-circuits", "title": "Electrical Circuits", "subject": "physics", "description": "Build and test a simple virtual electrical circuit.", "difficulty": "advanced", "duration": "35 min", "icon": "⚡", "objectives": ["Identify circuit components", "Trace a closed circuit", "Test the effect of a switch"] },
+    { "id": "dna-structure", "title": "DNA Structure Lab", "subject": "biology", "description": "Explore the double helix and the building blocks of genetic information.", "difficulty": "advanced", "duration": "40 min", "icon": "🧬", "objectives": ["Recognize the double-helix shape", "Pair complementary bases", "Connect DNA to inherited traits"] },
+    { "id": "periodic-table", "title": "Periodic Table Explorer", "subject": "chemistry", "description": "Explore elements and patterns in the periodic table.", "difficulty": "beginner", "duration": "15 min", "icon": "⚛️", "objectives": ["Find elements by symbol", "Compare element groups", "Read basic element information"] },
+    { "id": "algebra-visualizer", "title": "Algebra Visualizer", "subject": "mathematics", "description": "See equations come to life with a simple balance model.", "difficulty": "intermediate", "duration": "20 min", "icon": "📊", "objectives": ["Represent an equation visually", "Keep both sides balanced", "Check a solution"] }
+  ],
+  "languages": [
+    { "id": "kikuyu", "name": "Gĩkũyũ", "region": "Central Kenya", "speakers": "8M", "icon": "🏔️", "lessons": [
+      { "title": "Greetings & Introductions", "level": "beginner", "phrases": [{"native":"Wĩmũhoro?","translation":"How are you?"},{"native":"Nĩ mwega","translation":"I am fine"},{"native":"Nĩ wĩtwa atĩa?","translation":"What is your name?"}] },
+      { "title": "Numbers 1-5", "level": "beginner", "phrases": [{"native":"Ĩmwe","translation":"One"},{"native":"Igĩrĩ","translation":"Two"},{"native":"Ithatũ","translation":"Three"},{"native":"Inya","translation":"Four"},{"native":"Ithano","translation":"Five"}] },
+      { "title": "Family Members", "level": "intermediate", "phrases": [{"native":"Baba","translation":"Father"},{"native":"Maitu","translation":"Mother"},{"native":"Mũrũ","translation":"Son"},{"native":"Mwarĩ","translation":"Daughter"}] }
+    ] },
+    { "id": "luo", "name": "Dholuo", "region": "Western Kenya", "speakers": "4.2M", "icon": "🌊", "lessons": [
+      { "title": "Greetings", "level": "beginner", "phrases": [{"native":"Misawa","translation":"Good morning"},{"native":"Idhi nade?","translation":"How are you?"},{"native":"Adhi maber","translation":"I am fine"}] },
+      { "title": "Numbers 1-5", "level": "beginner", "phrases": [{"native":"Achiel","translation":"One"},{"native":"Ariyo","translation":"Two"},{"native":"Adek","translation":"Three"},{"native":"Ang'wen","translation":"Four"},{"native":"Abich","translation":"Five"}] }
+    ] },
+    { "id": "kalenjin", "name": "Kalenjin", "region": "Rift Valley", "speakers": "5M", "icon": "🏃", "lessons": [] },
+    { "id": "kamba", "name": "Kĩkamba", "region": "Eastern Kenya", "speakers": "4M", "icon": "🌄", "lessons": [] },
+    { "id": "meru", "name": "Kimeru", "region": "Mt. Kenya Region", "speakers": "2M", "icon": "🌿", "lessons": [] },
+    { "id": "maasai", "name": "Maa", "region": "Rift Valley/Tanzania", "speakers": "1.5M", "icon": "🦁", "lessons": [
+      { "title": "Basic Greetings", "level": "beginner", "phrases": [{"native":"Sopa!","translation":"Hello!"},{"native":"Iko","translation":"Yes"},{"native":"Mme","translation":"No"},{"native":"Ashe oleng","translation":"Thank you very much"}] },
+      { "title": "Animals & Community", "level": "beginner", "phrases": [{"native":"Enkishu","translation":"Cow"},{"native":"Endito","translation":"Girl"},{"native":"Engimatai","translation":"Children"}] }
+    ] },
+    { "id": "luhya", "name": "Luhya", "region": "Western Kenya", "speakers": "6.8M", "icon": "🌾", "lessons": [] },
+    { "id": "swahili", "name": "Kiswahili", "region": "Coastal/National", "speakers": "16M", "icon": "🏖️", "lessons": [] }
+  ],
+  "cultural_content": [
+    { "id": "hare-elephant", "language": "Gĩkũyũ", "type": "Folktale", "title": "The Hare and the Elephant", "description": "A traditional story teaching wisdom." },
+    { "id": "benga", "language": "Dholuo", "type": "Song", "title": "Benga Music Basics", "description": "Discover traditional Luo rhythms." },
+    { "id": "cattle-community", "language": "Maa", "type": "Tradition", "title": "Cattle and Community", "description": "An introduction to Maasai cultural traditions." },
+    { "id": "elders-wisdom", "language": "Kalenjin", "type": "Proverb", "title": "Wisdom of the Elders", "description": "Traditional sayings and their meanings." }
+  ],
+  "downloadable_content": [
+    { "id": "math-curriculum", "title": "Grade 7 Mathematics Curriculum", "type": "curriculum", "subject": "Mathematics", "grade": 7, "size_mb": 15, "downloaded": true },
+    { "id": "science-notes", "title": "Integrated Science Notes - Term 1", "type": "notes", "subject": "Science", "grade": 7, "size_mb": 8, "downloaded": false },
+    { "id": "english-worksheets", "title": "English Grammar Worksheets", "type": "worksheet", "subject": "English", "grade": 7, "size_mb": 3, "downloaded": true },
+    { "id": "kiswahili-guide", "title": "Kiswahili Literature Guide", "type": "notes", "subject": "Kiswahili", "grade": 7, "size_mb": 5, "downloaded": false },
+    { "id": "kenya-geography", "title": "Social Studies - Kenya Geography", "type": "curriculum", "subject": "Social Studies", "grade": 7, "size_mb": 12, "downloaded": false },
+    { "id": "creative-arts", "title": "Creative Arts Project Ideas", "type": "worksheet", "subject": "Creative Arts", "grade": 7, "size_mb": 20, "downloaded": true },
+    { "id": "computer-basics", "title": "Computer Science Basics", "type": "notes", "subject": "Computer Science", "grade": 7, "size_mb": 6, "downloaded": false },
+    { "id": "pe-guide", "title": "Physical Education Guide", "type": "curriculum", "subject": "PE", "grade": 7, "size_mb": 4, "downloaded": false }
+  ],
+  "service": {
+    "impact_areas": [
+      { "name": "Environment", "icon": "🌳", "projects": 3, "hours": 15 },
+      { "name": "Education", "icon": "📚", "projects": 2, "hours": 10 },
+      { "name": "Health", "icon": "🏥", "projects": 1, "hours": 5 },
+      { "name": "Elder Care", "icon": "👵", "projects": 2, "hours": 8 }
+    ],
+    "suggested_projects": [
+      { "title": "River Clean-up Day", "organization": "Local River Group", "duration": "4 hours", "category": "Environment", "spots": 20 },
+      { "title": "Tutoring Primary Students", "organization": "Nearby Primary School", "duration": "2 hours/week", "category": "Education", "spots": 10 },
+      { "title": "Tree Planting Initiative", "organization": "Community Green Group", "duration": "3 hours", "category": "Environment", "spots": 50 },
+      { "title": "Visit to a Children's Home", "organization": "Local Community Partner", "duration": "5 hours", "category": "Social Welfare", "spots": 15 }
+    ],
+    "reflection_prompts": [
+      "What did you learn from this experience?",
+      "How did this service benefit the community?",
+      "What challenges did you face and how did you overcome them?",
+      "How will you apply what you learned in your daily life?"
+    ]
+  },
+  "voice_samples": [
+    { "id": "sample-village-essay", "title": "My Village Essay", "duration": "2:34", "transcript": "My village is a beautiful place located in the highlands of Central Kenya. The rolling green hills are covered with tea plantations that stretch as far as the eye can see...", "date": "2024-01-15", "subject": "English" },
+    { "id": "sample-science-notes", "title": "Science Experiment Notes", "duration": "1:45", "transcript": "Today we conducted an experiment on photosynthesis. We placed a water plant in sunlight and observed the oxygen bubbles forming on the leaves...", "date": "2024-01-14", "subject": "Science" }
+  ],
+  "transcription_demo": [
+    "The importance of education",
+    " cannot be overstated.",
+    " Education opens doors",
+    " to new opportunities",
+    " and helps us understand",
+    " the world around us.",
+    " In Kenya, the CBC curriculum",
+    " focuses on developing",
+    " practical skills",
+    " and competencies."
+  ]
+}
